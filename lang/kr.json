@@ -1,0 +1,33 @@
+{
+	"common": {
+		"seq_no": "No.",
+		"operator": "운영자",
+		"name": "이름",
+		"please_input_name": "이름을 입력하세요!",
+		"product": "상품"
+	},
+	"sidebar": {
+		"title": "Ikh ireedui capital",
+		"dashboard": "대시보드",
+		"call_history": "통화 내역",
+		"settings": "설정",
+		"loan": "대출",
+		"list": "목록",
+		"dialing": "전화 걸기",
+		"users": "사용자",
+		"customer": "고객",
+		"term_loan": "기간 대출",
+		"all_history": "모든 내역",
+		"error_history": "오류 기록",
+		"dialing_history": "전화 걸기 내역",
+		"role_management": "역할 관리",
+		"cmm_code": "일반 코드",
+		"copyright": "모든 권리는 보호됩니다."
+	},
+	"customer": {
+		"customers": "고객",
+		"customer_phone": "고객 전화",
+		"rd": "등록 번호",
+		"create_new_customer": "새로운 고객 생성"
+	}
+}

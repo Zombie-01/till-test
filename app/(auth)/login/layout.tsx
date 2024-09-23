@@ -1,0 +1,89 @@
+"use client";
+import { Divider, Flex, Space, Typography } from "antd";
+import { Logo } from "@/assets/svg/Logo";
+import { useTheme } from "@/providers";
+import { LanguageButton, ThemeButton } from "@/components/header";
+
+export default function Layout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const theme = useTheme();
+  return (
+    <Flex
+      justify="center"
+      align="center"
+      className="bg-center"
+      style={{
+        backgroundImage: theme.isDark ? "url('/images/login_bg.jpeg')" : "url('/images/login_bg_dark.jpg')",
+        height: "100vh",
+      }}
+    >
+      <div
+        className="w-full max-w-[870px]"
+        style={{
+          ...styles.formWrapper,
+          ...(theme.isDark ? styles.bgDark : styles.bgLight),
+        }}
+      >
+        <Flex
+          justify="center"
+          className={"py-10 px-20 rounded shadow-sm backdrop-blur " + (theme.isDark ? "bg-white/10" : "bg-white/10")}
+        >
+          <div className="absolute top-6 start-6">
+            <Flex justify="flex-end">
+              <Logo />
+              <Flex align="flex-end" justify="flex-end">
+                <Typography.Title
+                  style={{
+                    marginBottom: 0,
+                    marginLeft: 10,
+                    lineHeight: "28px",
+                  }}
+                  level={3}
+                >
+                  Solution
+                </Typography.Title>
+              </Flex>
+            </Flex>
+          </div>
+          <div className="absolute top-6 end-6">
+            <Space>
+              <ThemeButton />
+              <LanguageButton />
+            </Space>
+          </div>
+          <Flex className="py-20 w-full max-w-[440px]" vertical>
+            <div className="mb-5">
+              <Typography.Title style={{ marginBottom: 0 }} level={1}>
+                ХУСистемд нэвтрэх
+              </Typography.Title>
+              <Typography.Paragraph>Нэвтрэхийн тулд имэйл болон нууц үгээ оруулна уу</Typography.Paragraph>
+            </div>
+            {children}
+            <Divider>ЭСВЭЛ</Divider>
+            <div>
+              <Typography.Text style={{ opacity: 0.5 }}>Нэвтрэхэд асуудал гарсан уу?</Typography.Text>
+              <Typography.Link className="float-right" href="/">
+                Администратортой холбогдох уу?
+              </Typography.Link>
+            </div>
+          </Flex>
+        </Flex>
+      </div>
+    </Flex>
+  );
+}
+
+const styles = {
+  formWrapper: {
+    padding: 10,
+  },
+  bgLight: {
+    background: "linear-gradient(45deg, #fff9f9 0%, rgba(255,255,255,0) 25%, rgba(255,255,255,0) 75%, #fff9f9 100%)",
+  },
+  bgDark: {
+    background: "linear-gradient(45deg, #000 0%, rgba(255,255,255,0) 25%, rgba(255,255,255,0) 75%, #000 100%)",
+  },
+};

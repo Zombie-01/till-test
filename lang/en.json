@@ -1,0 +1,33 @@
+{
+	"common": {
+		"seq_no": "No.",
+		"operator": "Operator",
+		"name": "Name",
+		"please_input_name": "Please input name!",
+		"product": "Product"
+	},
+	"sidebar": {
+		"title": "Ikh ireedui capital",
+		"dashboard": "Dashboard",
+		"call_history": "Call history",
+		"settings": "Settings",
+		"loan": "Loan",
+		"list": "List",
+		"dialing": "Dialing",
+		"users": "Users",
+		"customer": "Customer",
+		"term_loan": "Term loan",
+		"all_history": "All history",
+		"error_history": "Error history",
+		"dialing_history": "Dialing history",
+		"role_management": "Role management",
+		"cmm_code": "Common code",
+		"copyright": "all rights reserved."
+	},
+	"customer": {
+		"customers": "Customers",
+		"customer_phone": "Customer phone",
+		"rd": "Reg. number",
+		"create_new_customer": "Create new customer"
+	}
+}
