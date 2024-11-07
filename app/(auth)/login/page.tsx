@@ -14,14 +14,26 @@ const LoginPage = () => {
       <Form.Item
         label="Хэрэглэгчийн нэр"
         name="username"
-        rules={[{ required: true, message: "Хэрэглэгчийн нэрээ оруулна уу!" }]}
-      >
-        <Input disabled={loading} size="large" prefix={<MailTwoTone />} placeholder="Хэрэглэгчийн нэрээ оруулна уу" />
+        rules={[{ required: true, message: "Хэрэглэгчийн нэрээ оруулна уу!" }]}>
+        <Input
+          disabled={loading}
+          size="large"
+          prefix={<MailTwoTone />}
+          placeholder="Хэрэглэгчийн нэрээ оруулна уу"
+        />
       </Form.Item>
 
       {/* Password */}
-      <Form.Item label="Нууц үг" name="password" rules={[{ required: true, message: "Нууц үгээ оруулна уу!" }]}>
-        <Input.Password disabled={loading} size="large" prefix={<LockTwoTone />} placeholder="Нууц үгээ оруулна уу" />
+      <Form.Item
+        label="Нууц үг"
+        name="password"
+        rules={[{ required: true, message: "Нууц үгээ оруулна уу!" }]}>
+        <Input.Password
+          disabled={loading}
+          size="large"
+          prefix={<LockTwoTone />}
+          placeholder="Нууц үгээ оруулна уу"
+        />
       </Form.Item>
 
       {/* Forgot password */}
@@ -35,7 +47,13 @@ const LoginPage = () => {
       </Form.Item>
 
       {/* Submit */}
-      <Button size="large" className="" type="primary" htmlType="submit" block loading={loading}>
+      <Button
+        size="large"
+        className=""
+        type="primary"
+        htmlType="submit"
+        block
+        loading={loading}>
         Нэвтрэх
       </Button>
     </Form>

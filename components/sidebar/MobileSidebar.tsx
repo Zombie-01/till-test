@@ -21,16 +21,14 @@ export const MobileSidebar = ({
       className={cn(
         "block md:hidden fixed transition-all z-20",
         collapsed ? "left-0" : "-left-[280px]"
-      )}
-    >
+      )}>
       <div
         className={cn(
           "h-[60px] bg-[#001529] font-bold flex items-center border-b border-r justify-between px-3",
           isDark
             ? "bg-[#141414] border-[#303030]"
             : "bg-[#001529] border-[#121e32]"
-        )}
-      >
+        )}>
         <div className="flex gap-2 items-center">
           <Image
             src={logoSrc}
@@ -38,13 +36,12 @@ export const MobileSidebar = ({
             className="object-contain h-[32px] w-auto"
           />
           <h1 className={"text-white font-normal text-sm whitespace-nowrap"}>
-            Их ирээдүй капитал
+            TILL logistics
           </h1>
         </div>
         <button
           className="collapse_sidebar_btn"
-          onClick={() => setCollapsed((prev) => !prev)}
-        >
+          onClick={() => setCollapsed((prev) => !prev)}>
           <CloseSidebarIcon />
         </button>
       </div>

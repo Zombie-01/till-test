@@ -7,47 +7,56 @@ import CredentialsProvider from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      name: "KCH CRM",
+      name: "TILL",
       credentials: {
-        name: { label: "Name", type: "text", placeholder: "name" },
+        username: { label: "Name", type: "text", placeholder: "name" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        try {
-          const res = await fetch(`${process.env.NEXTAUTH_URL}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(credentials),
-          });
+        const staticUsers = [
+          {
+            id: "1",
+            username: "managerUser",
+            password: "password",
+            role: "manager",
+          },
+          {
+            id: "2",
+            username: "kasirUser",
+            password: "password",
+            role: "kasir",
+          },
+          {
+            id: "3",
+            username: "financeUser",
+            password: "password",
+            role: "finance",
+          },
+          {
+            id: "4",
+            username: "adminUser",
+            password: "password",
+            role: "admin",
+          },
+        ];
 
-          if (!res.ok) {
-            console.error("Login failed to fetch:", res.status, res.statusText);
-            return null;
-          }
+        // Find the user by name and password
+        const user = staticUsers.find(
+          (u) =>
+            u.username === credentials?.username &&
+            u.password === credentials?.password
+        );
 
-          const { data, errors } = await res.json();
-
-          if (errors) {
-            console.error("Login errors:", errors);
-            return null;
-          }
-
-          const user = data?.user;
-
-          if (user) {
-            console.log("Login user logged in:", user);
-            return {
-              id: user.id,
-              name: user.firstName,
-              email: user.email,
-              accessToken: data.accessToken,
-            };
-          } else {
-            console.error("Login no user data returned:", data);
-            return null;
-          }
-        } catch (error) {
-          console.error("Login error in authorize function:", error);
+        if (user) {
+          // Return the user object with role if found
+          console.log("Static user logged in:", user);
+          return {
+            id: user.id,
+            name: user.username,
+            role: user.role,
+          };
+        } else {
+          console.error("Invalid credentials");
           return null;
         }
       },
@@ -57,16 +66,15 @@ const handler = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.accessToken = user.accessToken;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token }) {
-      // console.log(session, token);
       if (token) {
-        session.id = token.id as string;
-        session.accessToken = token.accessToken as string;
-        session.user.id = token.id as string;
+        session.id = token.id;
+        session.user.id = token.id;
+        session.user.role = token.role;
       }
       return session;
     },

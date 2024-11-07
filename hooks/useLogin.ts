@@ -24,11 +24,15 @@ export const useLogin = () => {
   };
 
   // Form onFinish function
-  const submit: FormProps<LoginSubmitTypes>["onFinish"] = async ({ username, password, remember }) => {
+  const submit: FormProps<LoginSubmitTypes>["onFinish"] = async ({
+    username,
+    password,
+    remember,
+  }) => {
     setLoading(true);
     const res = await signIn("credentials", {
       username: username,
-      password: encryptRSA(password),
+      password: password,
       redirect: false,
     });
 

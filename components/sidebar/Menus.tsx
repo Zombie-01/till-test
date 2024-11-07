@@ -2,6 +2,7 @@
 
 import { ItemType, MenuItemType } from "antd/es/menu/interface";
 import { useTranslations } from "next-intl";
+import { FaTruckLoading } from "react-icons/fa";
 
 import {
   FaHandHoldingDollar,
@@ -15,6 +16,7 @@ import {
   FaPhone,
   FaHeadset,
 } from "react-icons/fa6";
+import { GiCargoCrane } from "react-icons/gi";
 
 export const getMenus = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,64 +27,77 @@ export const getMenus = () => {
       type: "group",
       label: t("dashboard"),
       children: [
-        { key: "/crm/dashboard/dialing", label: t("dialing"), icon: <FaHeadset /> },
+        {
+          key: "/crm/dashboard/dialing",
+          label: "График",
+          icon: <FaHeadset />,
+        },
         {
           key: "/crm/dashboard/customer",
-          label: t("customer"),
+          label: "Алдааны мэдээлэл",
           icon: <FaUserGroup />,
         },
-        { key: "/crm/dashboard/loan", label: t("loan"), icon: <FaDollarSign /> },
+        {
+          key: "/crm/dashboard/loan",
+          label: "Нийт тайлан",
+          icon: <FaDollarSign />,
+        },
       ],
     },
 
     {
       key: "/crm/customer",
-      label: t("customer"),
+      label: "Тооцоо",
       type: "group",
       children: [
         {
           key: "/crm/customers",
-          label: t("list"),
+          label: "Тээврийн тооцоо",
           icon: <FaList />,
         },
         {
           key: "/crm/customer-error-history",
-          label: t("error_history"),
+          label: "Тайлан",
           icon: <FaClock />,
         },
       ],
     },
     {
       key: "loan",
-      label: t("loan"),
+      label: "Талбай",
       type: "group",
       children: [
         {
           key: "/crm/loans",
-          label: t("term_loan"),
+          label: "Талбайн бүртгэл",
           icon: <FaHandHoldingDollar />,
         },
         {
           key: "/crm/loan-error-history",
-          label: t("error_history"),
+          label: "Талбайн тооцоо",
           icon: <FaClock />,
         },
       ],
     },
     {
       key: "/crm/dialed",
-      label: t("call_history"),
+      label: "Aчаа",
       type: "group",
       children: [
         {
-          label: t("all_history"),
+          label: "Ачаа дөхөлт",
+          key: "/crm/dialed-all-history",
+          icon: <FaTruckLoading />,
+        },
+        {
+          label: "Талбайд ирснээр",
           key: "/crm/dialed-all-history",
           icon: <FaHeadset />,
         },
         {
-          label: t("dialing_history"),
+          label: "Үлдэгдэл",
           key: "/crm/dialed-history",
-          icon: <FaPhone />,
+          icon: <GiCargoCrane />,
         },
       ],
     },

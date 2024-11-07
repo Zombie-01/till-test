@@ -5,25 +5,46 @@ import { NextResponse } from "next/server";
  * Middleware
  */
 export default withAuth(
-  async function middleware(req) {
-    const { pathname } = req.nextUrl;
+  async function middleware(request) {
+    const { pathname } = request.nextUrl;
+    const token = request.nextauth?.token;
+    const userRole = token?.role as "admin" | "manager" | "kasir" | "finance";
 
-    if (pathname === "/login" && req.nextauth.token) {
-      return NextResponse.redirect(new URL("/crm/dasboard/customer", req.url));
+    // Redirect authenticated users trying to access the login page
+    if (pathname === "/login" && token) {
+      return NextResponse.redirect(
+        new URL("/crm/dashboard/customer", request.url)
+      );
     }
 
-    // Protect /crm and its subfolders
-    if (pathname.startsWith("/crm") && !req.nextauth.token) {
-      return NextResponse.redirect(new URL("/(auth)/login", req.url));
+    // Redirect unauthenticated users trying to access protected routes
+    if (pathname.startsWith("/crm") && !token) {
+      return NextResponse.redirect(new URL("/(auth)/login", request.url));
     }
 
-    // const sessionData = await getToken({ req, secret });
+    // Define role-based access paths
+    const rolePaths = {
+      admin: ["/crm", "/manager", "/kasir", "/finance"],
+      manager: ["/manager", "/crm"],
+      kasir: ["/kasir"],
+      finance: ["/finance"],
+    };
 
-    // Modify headers for API requests
-    if (pathname.startsWith("/api/v1") && req.nextauth?.token?.accessToken) {
-      console.log("req.nextauth?.token?.accessToken", req.nextauth?.token?.accessToken);
-      const requestHeaders = new Headers(req.headers);
-      requestHeaders.set("Authorization", `Bearer ${req.nextauth?.token?.accessToken}`);
+    // Role-based redirection based on allowed paths
+    if (userRole && rolePaths[`${userRole}`]) {
+      const allowedPaths = rolePaths[`${userRole}`];
+      if (!allowedPaths.some((path) => pathname.startsWith(path))) {
+        return NextResponse.redirect(new URL(allowedPaths[0], request.url));
+      }
+    } else if (!userRole) {
+      // Redirect to login if the role is unrecognized or missing
+      return NextResponse.redirect(new URL("/(auth)/login", request.url));
+    }
+
+    // Add Authorization header for API requests
+    if (pathname.startsWith("/api/v1") && token?.accessToken) {
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set("Authorization", `Bearer ${token.accessToken}`);
       return NextResponse.next({
         request: {
           headers: requestHeaders,
@@ -35,11 +56,19 @@ export default withAuth(
   },
   {
     callbacks: {
-      // Optionally add authorization callback
       authorized: ({ token }) => !!token,
     },
   }
 );
 
-// Match /crm and ANY route that comes after it
-export const config = { matcher: ["/crm/:path*", "/api/v1/:path*"] };
+// Match routes for CRM, admin, kasir, finance, manager, and API requests
+export const config = {
+  matcher: [
+    "/crm/:path*",
+    "/admin/:path*",
+    "/kasir/:path*",
+    "/finance/:path*",
+    "/manager/:path*",
+    "/api/v1/:path*",
+  ],
+};

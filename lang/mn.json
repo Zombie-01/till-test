@@ -1,33 +1,33 @@
 {
-	"common": {
-		"seq_no": "Д/д",
-		"operator": "Оператор",
-		"name": "Нэр",
-		"please_input_name": "Нэр оруулна уу",
-		"product": "Бүтээгдэхүүн"
-	},
-	"sidebar": {
-		"title": "Их ирээдүй капитал",
-		"dashboard": "Хянах самбар",
-		"call_history": "Холбоо барьсан түүх",
-		"settings": "Тохиргоо",
-		"loan": "Зээл",
-		"list": "Жагсаалт",
-		"dialing": "Залгалт",
-		"users": "Хэрэглэгчид",
-		"customer": "Харилцагч",
-		"term_loan": "Хугацаатай зээл",
-		"all_history": "Нийт түүх",
-		"error_history": "Алдааны түүх",
-		"dialing_history": "Залгасан түүх",
-		"role_management": "Эрхийн удирдлага",
-		"cmm_code": "Нийтлэг код",
-		"copyright": "all rights reserved."
-	},
-	"customer": {
-		"customers": "Харилцагчид",
-		"customer_phone": "Харилцагчийн дугаар",
-		"rd": "РД",
-		"create_new_customer": "Харилцагч нэмэх"
-	}
+  "common": {
+    "seq_no": "Д/д",
+    "operator": "Оператор",
+    "name": "Нэр",
+    "please_input_name": "Нэр оруулна уу",
+    "product": "Бүтээгдэхүүн"
+  },
+  "sidebar": {
+    "title": "TILL logistics",
+    "dashboard": "Хянах самбар",
+    "call_history": "Холбоо барьсан түүх",
+    "settings": "Тохиргоо",
+    "loan": "Зээл",
+    "list": "Жагсаалт",
+    "dialing": "Залгалт",
+    "users": "Хэрэглэгчид",
+    "customer": "Харилцагч",
+    "term_loan": "Хугацаатай зээл",
+    "all_history": "Нийт түүх",
+    "error_history": "Алдааны түүх",
+    "dialing_history": "Залгасан түүх",
+    "role_management": "Эрхийн удирдлага",
+    "cmm_code": "Нийтлэг код",
+    "copyright": "all rights reserved."
+  },
+  "customer": {
+    "customers": "Харилцагчид",
+    "customer_phone": "Харилцагчийн дугаар",
+    "rd": "РД",
+    "create_new_customer": "Харилцагч нэмэх"
+  }
 }
