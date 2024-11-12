@@ -1,4 +1,4 @@
-import { ValidateProvider } from "@/context/ValidateProvider";
+import { ValidateProvider } from "@/providers/ValidateProvider";
 import CBaseForm from "./form";
 
 export const CForm = ({ children, ...props }: any) => {

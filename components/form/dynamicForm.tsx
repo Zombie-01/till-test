@@ -9,10 +9,9 @@ import {
 import CBaseForm from "./form";
 import { CForm } from "./baseForm";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Modal } from "../modal";
 import { HtmlProps } from "next/dist/shared/lib/html-context.shared-runtime";
 import API from "@/utils/api";
-import { Button } from "@nextui-org/react";
+import { Button, Modal } from "antd";
 
 interface ValidateProps {
   label: string;
@@ -61,25 +60,18 @@ const CustomForm: FunctionComponent<DynamicFormProps> = ({
   }, [action_id, isOpen]);
   return (
     <>
-      <Button size="sm" onPress={() => setIsOpen(true)}>
+      <Button onClick={() => setIsOpen(true)}>
         {modalType === "create" ? "Шинэ" : "Засах"}
       </Button>
-      <Modal
-        title={name}
-        isOpen={isOpen}
-        onClose={closeModal}
-        content={
-          <>
-            <CForm
-              url={url}
-              name={name}
-              validate_schema={ValidateSchema}
-              method={modalType === "create" ? "POST" : "PUT"}>
-              {children}
-            </CForm>
-          </>
-        }
-      />
+      <Modal title={name} open={isOpen} onClose={closeModal}>
+        <CForm
+          url={url}
+          name={name}
+          validate_schema={ValidateSchema}
+          method={modalType === "create" ? "POST" : "PUT"}>
+          {children}
+        </CForm>
+      </Modal>
     </>
   );
 };
