@@ -45,7 +45,8 @@ export const Sidebar = ({
     <Layout.Sider
       collapsed={collapsed}
       width={collapsed ? 80 : 280}
-      className=" md:block fixed left-0 top-0 z-10">
+      className=" md:block fixed left-0 top-0 z-10"
+    >
       <div
         className={cn(
           `h-[60px] font-bold flex items-center border-b border-r`,
@@ -53,7 +54,8 @@ export const Sidebar = ({
           isDark
             ? "bg-[#141414] border-[#303030]"
             : "bg-[#001529] border-[#121e32]"
-        )}>
+        )}
+      >
         <div className="flex gap-2 items-center">
           <Image
             src={"/android-chrome-512x512.png"}
@@ -65,14 +67,16 @@ export const Sidebar = ({
             className={cn(
               "!m-0 text-white text-sm",
               collapsed ? "!hidden" : "!block"
-            )}>
+            )}
+          >
             {t("title")}
           </h3>
         </div>
         {!collapsed && (
           <button
             className="collapse_sidebar_btn"
-            onClick={() => setCollapsed((prev) => !prev)}>
+            onClick={() => setCollapsed((prev) => !prev)}
+          >
             <CloseSidebarIcon />
           </button>
         )}
