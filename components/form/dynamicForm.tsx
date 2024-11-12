@@ -63,7 +63,12 @@ const CustomForm: FunctionComponent<DynamicFormProps> = ({
       <Button onClick={() => setIsOpen(true)}>
         {modalType === "create" ? "Шинэ" : "Засах"}
       </Button>
-      <Modal title={name} open={isOpen} onClose={closeModal}>
+      <Modal
+        title={name}
+        open={isOpen}
+        width={1000}
+        onClose={closeModal}
+        footer={false}>
         <CForm
           url={url}
           name={name}

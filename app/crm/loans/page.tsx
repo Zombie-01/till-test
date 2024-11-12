@@ -6,6 +6,7 @@ import { List } from "@/components";
 import { LoanForm } from "./Form";
 import { LoanTable } from "./Table";
 import { LoanFilter } from "./Filter";
+import AproachForm from "./AproachForm";
 
 const LoansPage = () => {
   //States
@@ -21,7 +22,11 @@ const LoansPage = () => {
 
   // Render
   return (
-    <List title="Зээлүүд" titleIcon={<FaHandHoldingDollar />} filterForm={<LoanFilter />} hideCreateButton>
+    <List
+      title="Зээлүүд"
+      titleIcon={<FaHandHoldingDollar />}
+      filterForm={<LoanFilter />}
+      onCreateModal={<AproachForm modalType="create" />}>
       {/* Loan detail modal */}
       <LoanForm close={closeModal} formData={formData} />
       {/* List table */}

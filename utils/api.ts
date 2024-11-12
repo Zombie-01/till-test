@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-
 const API = async ({
   url,
   method = "GET",
@@ -43,7 +41,7 @@ const API = async ({
     return responseData;
   } catch (error) {
     console.error("API request error:", error);
-    toast.error(`${JSON.stringify(error)}`);
+    alert(`${JSON.stringify(error)}`);
     throw new Error("API request error");
   }
 };

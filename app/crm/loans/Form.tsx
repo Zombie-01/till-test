@@ -1,4 +1,15 @@
-import { Button, Card, Col, Descriptions, Divider, Form, Input, Modal, Row, Tag } from "antd";
+import {
+  Button,
+  Card,
+  Col,
+  Descriptions,
+  Divider,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Tag,
+} from "antd";
 import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
 
 const { Item } = Descriptions;
@@ -20,15 +31,18 @@ export const LoanForm = ({ close, formData }: LoanFormProps) => {
         <Button key="close" icon={<CloseOutlined />} onClick={close}>
           Хаах
         </Button>,
-        <Button type="primary" key="save" icon={<CheckOutlined />} onClick={submit}>
+        <Button
+          type="primary"
+          key="save"
+          icon={<CheckOutlined />}
+          onClick={submit}>
           Хадгалах
         </Button>,
       ]}
       open={!!formData}
       onClose={close}
       onCancel={close}
-      width={1200}
-    >
+      width={1200}>
       <Row gutter={[12, 12]}>
         <Col span={16}>
           <Card size="small">
@@ -99,7 +113,11 @@ export const LoanForm = ({ close, formData }: LoanFormProps) => {
         <Col span={8}>
           <Card size="small">
             <Form autoComplete="off" layout="vertical" form={form}>
-              <Form.Item label="Хариу үйлдэл" name="receiver" required className="!mb-3">
+              <Form.Item
+                label="Хариу үйлдэл"
+                name="receiver"
+                required
+                className="!mb-3">
                 <Input />
               </Form.Item>
               <Form.Item label="Нөхцөл байдал" name="type" className="!mb-3">

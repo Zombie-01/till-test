@@ -1,4 +1,8 @@
-import { PlusOutlined, FilterOutlined, ReloadOutlined } from "@ant-design/icons";
+import {
+  PlusOutlined,
+  FilterOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
 import { Card, Button, Typography, Space, Tag, Drawer } from "antd";
 import { FilterItemType, useListContext } from "./ListProvider";
 
@@ -15,9 +19,11 @@ export const List = ({
   filterButtonText,
   filterForm,
   children,
+  onCreateModal,
 }: ListProps) => {
   // List context states
-  const { filters, showFilterForm, setShowFilterForm, setFilters, setOptions } = useListContext();
+  const { filters, showFilterForm, setShowFilterForm, setFilters, setOptions } =
+    useListContext();
 
   // Filter item close
   const onFilterItemClose = (item: FilterItemType, fieldName: string) => {
@@ -65,7 +71,12 @@ export const List = ({
                 <Space key={filter.filterName} size={2}>
                   <Typography.Text strong>{filter.filterName}:</Typography.Text>
                   {filter.items.map((item) => (
-                    <Tag key={item.id} closable onClose={() => onFilterItemClose(item, filter.filterField)}>
+                    <Tag
+                      key={item.id}
+                      closable
+                      onClose={() =>
+                        onFilterItemClose(item, filter.filterField)
+                      }>
                       {item.name}
                     </Tag>
                   ))}
@@ -81,18 +92,20 @@ export const List = ({
               icon={<PlusOutlined />}
               onClick={() => {
                 onCreateButtonClick && onCreateButtonClick();
-              }}
-            >
+              }}>
               {createButtonText || "Create new"}
             </Button>
           )}
 
           {/* Filter button */}
           {hideFilterButton === false && (
-            <Button icon={<FilterOutlined />} onClick={() => setShowFilterForm(true)}>
+            <Button
+              icon={<FilterOutlined />}
+              onClick={() => setShowFilterForm(true)}>
               {filterButtonText || "Хайлт"}
             </Button>
           )}
+          {onCreateModal && onCreateModal}
 
           {/* Reset button */}
           {filters && filters.length > 0 && (
@@ -101,13 +114,16 @@ export const List = ({
             </Button>
           )}
         </Space>
-      }
-    >
+      }>
       {/* Table */}
       {children}
 
       {/* Filter modal */}
-      <Drawer title={"Хайлт"} open={showFilterForm} width={400} onClose={() => setShowFilterForm(false)}>
+      <Drawer
+        title={"Хайлт"}
+        open={showFilterForm}
+        width={400}
+        onClose={() => setShowFilterForm(false)}>
         {filterForm}
       </Drawer>
     </Card>
@@ -138,4 +154,5 @@ interface ListProps {
 
   // Children
   children: React.ReactNode;
+  onCreateModal?: React.ReactNode;
 }

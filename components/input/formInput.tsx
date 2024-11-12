@@ -21,7 +21,6 @@ const FormInput: FunctionComponent<IFormInput> = ({
 
   return (
     <Form.Item
-      label={label}
       name={name}
       validateStatus={error && Object.keys(error).includes(name) ? "error" : ""}
       help={error && Object.keys(error).includes(name) ? error[name] : ""}
