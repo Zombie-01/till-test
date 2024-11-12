@@ -23,7 +23,6 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       key: "seq_no",
       render: (text) => <Flex justify="center">{text}</Flex>,
       sorter: (a, b) => a.seq_no - b.seq_no,
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: t("operator"),
@@ -32,7 +31,6 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       width: 150,
       render: (text) => <a>{text}</a>,
       sorter: (a, b) => a.operator.localeCompare(b.operator),
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Дөхөлт огноо",
@@ -40,7 +38,6 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       key: "col1",
       width: 150,
       render: () => "-",
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Орох хил",
@@ -48,7 +45,6 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       key: "col2",
       width: 150,
       render: () => "-",
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Ирэх / явах",
@@ -56,7 +52,6 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       key: "col3",
       width: 100,
       render: () => "-",
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Чингэлэг дугаар",
@@ -64,7 +59,6 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       key: "col4",
       width: 150,
       render: () => "-",
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Даац",
@@ -72,21 +66,18 @@ export const LoanTable = ({ onEdit }: { onEdit: (listItem: any) => void }) => {
       key: "col5",
       width: 150,
       render: () => "-",
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Хоосон / ачаатай",
       dataIndex: "col6",
       key: "col6",
       width: 100,
-      fixed: size.width < 768 ? false : "left",
     },
     {
       title: "Зарах эсэх",
       dataIndex: "col7",
       key: "col7",
       width: 100,
-      fixed: size.width < 768 ? false : "left",
     },
     { title: "Зууч код", dataIndex: "col8", key: "col8", width: 200 },
     { title: "Байх №", dataIndex: "col9", key: "col9", width: 150 },
