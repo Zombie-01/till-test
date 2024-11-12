@@ -27,7 +27,7 @@ const FormInput: FunctionComponent<IFormInput> = ({
       help={error && Object.keys(error).includes(name) ? error[name] : ""}
       className="w-full">
       <Input
-        {...props}
+        {...(props as any)}
         placeholder={label}
         type={inputtype}
         className="w-full"

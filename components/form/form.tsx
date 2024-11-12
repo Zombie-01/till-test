@@ -8,9 +8,8 @@ import React, {
 import { useValidate } from "@/utils/useValidate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import API from "@/utils/api";
-import { toast } from "react-toastify";
-import { useValidateContext } from "@/context/ValidateProvider";
 import ObjectUtil from "@/utils/ObjectUtil";
+import { useValidateContext } from "@/providers/ValidateProvider";
 
 interface ICBaseForm extends FormHTMLAttributes<HTMLFormElement> {
   validate_schema: any;
@@ -34,7 +33,7 @@ const CBaseForm: FunctionComponent<ICBaseForm> = ({
   const post = async (formData: FormData) => {
     setLaod(true);
     const response = await API({ url, body: formData, method })
-      .catch((e: any) => toast.error(`${JSON.stringify(e)}`))
+      .catch((e: any) => alert(`${JSON.stringify(e)}`))
       .finally(() => {
         setLaod(false);
       });
