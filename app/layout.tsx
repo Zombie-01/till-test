@@ -49,9 +49,7 @@ export default async function RootLayout({
         <TanstackQueryProvider>
           <SessionProvider>
             <NextIntlClientProvider locale={locale} messages={messages}>
-              <ValidateProvider>
-                <RootProvider>{children}</RootProvider>
-              </ValidateProvider>
+              <RootProvider>{children}</RootProvider>
             </NextIntlClientProvider>
           </SessionProvider>
         </TanstackQueryProvider>
